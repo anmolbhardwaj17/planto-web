@@ -42,6 +42,11 @@
   100% { transform: translateX(100%); }
 }
 
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.85) rotate(0deg); }
+  50%      { opacity: 1;   transform: scale(1.15) rotate(45deg); }
+}
+
 @keyframes bubble-in {
   0%   { opacity: 0; transform: translateX(-50%) scale(0.85); }
   100% { opacity: 1; transform: translateX(-50%) scale(1); }

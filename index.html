@@ -3,244 +3,371 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Planto — A pet that grows on you.</title>
-  <meta name="description" content="A menu bar plant pet for macOS. Real weather, real time, five species, one quiet companion that grows beside your day." />
-  <meta property="og:title" content="Planto — A pet that grows on you." />
-  <meta property="og:description" content="A menu bar plant pet for macOS." />
-  <meta property="og:image" content="assets/icon/planto-icon-256.png" />
+  <script>
+    // Force fresh reloads to land at the top instead of restoring scroll position.
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    // Strip any leftover hash on a hard reload so we don't auto-jump to a section.
+    if (
+      location.hash &&
+      performance.getEntriesByType &&
+      performance.getEntriesByType("navigation")[0] &&
+      performance.getEntriesByType("navigation")[0].type === "reload"
+    ) {
+      history.replaceState(null, "", location.pathname + location.search);
+    }
+
+    // Mark as JS-enabled before paint so CSS can pre-hide animated elements,
+    // killing the flash-of-content before GSAP takes over.
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("js-anim");
+    }
+  </script>
+  <title>Planto — The easiest plant you'll ever keep alive</title>
+  <meta name="description" content="A tiny plant pet that lives in your menu bar. It feels the weather, perks up when you visit, and gently asks for a sip of water now and then. Free for macOS." />
+  <meta name="theme-color" content="#F5F4ED" />
+  <link rel="canonical" href="https://planto.anmolbhardwaj.com/" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+  <meta property="og:url" content="https://planto.anmolbhardwaj.com/" />
+  <meta property="og:title" content="Planto — The easiest plant you'll ever keep alive" />
+  <meta property="og:description" content="A tiny plant pet that lives in your macOS menu bar. Always nearby, never in the way." />
+  <meta property="og:image" content="https://planto.anmolbhardwaj.com/assets/icon/planto-icon-256.png" />
+  <meta property="og:site_name" content="Planto" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Planto — A plant for your menu bar" />
+  <meta name="twitter:description" content="A tiny plant pet that lives in your macOS menu bar." />
+  <meta name="twitter:image" content="https://planto.anmolbhardwaj.com/assets/icon/planto-icon-256.png" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="256x256" href="assets/icon/planto-icon-256.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Font preloads — kill FOIT for the two custom faces -->
+  <link rel="preload" as="font" type="font/ttf" href="assets/fonts/Unbounded.ttf" crossorigin />
+  <link rel="preload" as="font" type="font/ttf" href="assets/fonts/SpaceGrotesk.ttf" crossorigin />
+
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/animations.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <header class="nav">
   <div class="nav-inner">
     <a href="#top" class="nav-brand">
-      <img src="assets/icon/favicon.png" alt="" />
+      <img loading="lazy" decoding="async" src="assets/icon/favicon.png" alt="" />
       <span>Planto</span>
     </a>
     <nav class="nav-links">
-      <a href="#features">Features</a>
+      <a href="#cast">Plants</a>
       <a href="#install">Install</a>
-      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/anmolbhardwaj17/planto" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
+<main id="main">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="container hero-grid">
+    <span class="deco deco--squiggle deco--tl"></span>
+    <span class="deco deco--sparkle deco--s1"></span>
+    <span class="deco deco--sparkle deco--s2"></span>
+    <span class="deco deco--sparkle deco--s3"></span>
+    <span class="deco deco--dot deco--d1"></span>
+    <span class="deco deco--dot deco--d2"></span>
+    <span class="deco deco--squiggle deco--br"></span>
+
+    <div class="container hero-stack">
       <div class="hero-copy reveal">
-        <div class="eyebrow">A pet that grows on you.</div>
-        <h1>Planto</h1>
-        <p class="lede">A tiny watercolor plant that lives in your menu bar. It tracks real weather, real time, and a quiet inner life of its own — a calm companion that asks for almost nothing and grows beside your day.</p>
+        <div class="eyebrow">✦ A plant for your menu bar ✦</div>
+        <h1>The easiest plant<br/>you'll ever keep alive.</h1>
+        <p class="lede">There's a tiny plant living up in your menu bar. It feels the weather you feel, perks up when you visit, and gently asks for a sip of water now and then.</p>
         <div class="cta-row">
-          <a href="#install" data-cta class="pill pill--dark">Install DMG</a>
-          <a href="https://github.com" target="_blank" rel="noopener" class="pill">View on GitHub</a>
+          <a href="#install" data-cta class="get-started">
+            <span class="get-started__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg>
+            </span>
+            <span class="get-started__label">Download for macOS</span>
+          </a>
         </div>
       </div>
 
-      <div class="scene-card reveal" aria-hidden="true">
-        <div class="sky"></div>
-        <div class="sun"></div>
-        <div class="cloud cloud--a"></div>
-        <div class="cloud cloud--b"></div>
-        <div class="weather-pill">☀︎ 21° San Francisco</div>
-        <div class="bubble">Oh, hi there!</div>
-        <div class="scene-plant">
-          <img src="assets/plants/sprout_3.png" alt="" />
-        </div>
-      </div>
+    </div>
+    <div class="hero-plants" aria-hidden="true">
+      <img loading="lazy" decoding="async" src="assets/plants/sprout_2.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/cactus_3.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sunflower_3.png" alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/bonsai_3.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/flytrap_2.png"   alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sprout_4.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sunflower_4.png" alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/cactus_2.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/bonsai_4.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/flytrap_3.png"   alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sprout_3.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/cactus_4.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sunflower_2.png" alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/bonsai_2.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/flytrap_4.png"   alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sprout_1.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/cactus_1.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/sunflower_1.png" alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/bonsai_1.png"    alt="" />
+      <img loading="lazy" decoding="async" src="assets/plants/flytrap_1.png"   alt="" />
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section id="features">
-    <div class="container">
-      <div class="section-head reveal">
-        <h2>A real living plant.</h2>
-        <p>Three rules — flat fills only, chunky shapes with breathing room, one accent per surface — applied to a creature that actually has a day.</p>
+  <section id="features" class="features-section">
+    <span class="deco deco--squiggle deco--tl"></span>
+    <span class="deco deco--sparkle deco--s1"></span>
+    <span class="deco deco--sparkle deco--s2"></span>
+    <span class="deco deco--sparkle deco--s3"></span>
+    <span class="deco deco--dot deco--d1"></span>
+    <span class="deco deco--dot deco--d2"></span>
+    <span class="deco deco--squiggle deco--br"></span>
+
+    <div class="container features-split">
+      <div class="features-col reveal">
+        <div class="eyebrow">✦ Has a heart ✦</div>
+        <h2>Small,<br/>but real.</h2>
+
+        <ul class="feature-list">
+          <li>
+            <div class="feature-icon icon--malibu">
+              <svg class="ic ic-water" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path class="ic-shape" d="M12 3 C 8 9 6 12 6 15 a 6 6 0 0 0 12 0 c 0 -3 -2 -6 -6 -12 z" fill="#7DCAF6"/>
+                <circle class="ic-droplet" cx="12" cy="9" r="1.4" fill="#100F06" stroke="none"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Asks for water</h3>
+              <p>A little wilt means it's thirsty. One tap of the can and it perks right back up.</p>
+            </div>
+          </li>
+          <li>
+            <div class="feature-icon icon--gold">
+              <svg class="ic ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4" fill="#FFDA57"/>
+                <g class="ic-rays">
+                  <line x1="12" y1="2"  x2="12" y2="4.5"/>
+                  <line x1="12" y1="19.5" x2="12" y2="22"/>
+                  <line x1="2"  y1="12" x2="4.5" y2="12"/>
+                  <line x1="19.5" y1="12" x2="22" y2="12"/>
+                  <line x1="4.6" y1="4.6"  x2="6.4" y2="6.4"/>
+                  <line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
+                  <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/>
+                  <line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <h3>Knows the weather</h3>
+              <p>Sunny in your city? It's beaming. Pouring outside? It's curled up and dozing.</p>
+            </div>
+          </li>
+          <li>
+            <div class="feature-icon icon--lavender">
+              <svg class="ic ic-spark" viewBox="0 0 24 24" fill="#A293FF" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
+                <path d="M12 2 L13.6 9.4 L21 11 L13.6 12.6 L12 20 L10.4 12.6 L3 11 L10.4 9.4 Z"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Has a personality</h3>
+              <p>Sassy, dramatic, zen, curious — every plant comes with opinions.</p>
+            </div>
+          </li>
+          <li>
+            <div class="feature-icon icon--pink">
+              <svg class="ic ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9" fill="#FFBBF4"/>
+                <line class="ic-hand-hr"  x1="12" y1="12" x2="12" y2="7"/>
+                <line class="ic-hand-min" x1="12" y1="12" x2="16" y2="12"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Always up there</h3>
+              <p>Tucked into your menu bar, one click away — a tiny friend who never leaves.</p>
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <div class="features">
-        <div class="feature-card reveal">
-          <div class="feature-icon icon--teal">⏱</div>
-          <h3>Real-time simulation</h3>
-          <p>Water, light, temperature and mood update on the same minute the world does. No fast-forward, no fake numbers.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon icon--lavender">★</div>
-          <h3>Five personalities</h3>
-          <p>Each species reacts to weather, light and your attention differently. Forgiving sprout, stubborn cactus, dramatic sunflower.</p>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon icon--coral">!</div>
-          <h3>Random events</h3>
-          <p>A leaf unfurls. A bug visits. A heatwave rolls in. Tiny moments that make checking in feel worth it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPECIES -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <h2>Five species to grow.</h2>
-        <p>Pick a plant that matches the kind of attention you actually have.</p>
-      </div>
-
-      <div class="species-row">
-        <div class="species-card reveal">
-          <img src="assets/plants/sprout_3.png" alt="Sprout" />
-          <h3>Sprout</h3>
-          <p class="quip">A friendly first plant.</p>
-          <div class="trait-pills">
-            <span class="trait">forgiving</span>
-            <span class="trait">balanced</span>
-            <span class="trait">friendly</span>
-          </div>
-        </div>
-        <div class="species-card reveal">
-          <img src="assets/plants/cactus_3.png" alt="Cactus" />
-          <h3>Cactus</h3>
-          <p class="quip">Tough little desert philosopher.</p>
-          <div class="trait-pills">
-            <span class="trait">desert tough</span>
-            <span class="trait">drought-loving</span>
-            <span class="trait">stubborn</span>
-          </div>
-        </div>
-        <div class="species-card reveal">
-          <img src="assets/plants/sunflower_3.png" alt="Sunflower" />
-          <h3>Sunflower</h3>
-          <p class="quip">Tall, bright, dramatic.</p>
-          <div class="trait-pills">
-            <span class="trait">fast grower</span>
-            <span class="trait">sun-hungry</span>
-            <span class="trait">fragile</span>
-          </div>
-        </div>
-        <div class="species-card reveal">
-          <img src="assets/plants/bonsai_3.png" alt="Bonsai" />
-          <h3>Bonsai</h3>
-          <p class="quip">A tiny tree with a long memory.</p>
-          <div class="trait-pills">
-            <span class="trait">slow</span>
-            <span class="trait">ancient</span>
-            <span class="trait">patient</span>
-          </div>
-        </div>
-        <div class="species-card reveal">
-          <img src="assets/plants/flytrap_3.png" alt="Venus flytrap" />
-          <h3>Venus flytrap</h3>
-          <p class="quip">Hungry. Humid. Self-sufficient.</p>
-          <div class="trait-pills">
-            <span class="trait">carnivorous</span>
-            <span class="trait">humid</span>
-            <span class="trait">self-feeding</span>
-          </div>
-        </div>
+      <div class="features-shot reveal">
+        <img loading="lazy" decoding="async" src="assets/screenshots/hero-app.png" alt="Planto plant card showing a sunflower in a terracotta pot with health, water, and weather stats" />
       </div>
     </div>
   </section>
 
-  <!-- WEATHER + TIME -->
-  <section>
-    <div class="container">
-      <div class="section-head reveal">
-        <h2>Real weather, real time.</h2>
-        <p>Planto sips data quietly in the background and replays anything you missed.</p>
-      </div>
-
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-num icon--gold">1</div>
-          <h3>Live weather</h3>
-          <p>Open-Meteo, no API key, no account. Your plant feels what your city feels.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num icon--malibu">2</div>
-          <h3>Minute ticks</h3>
-          <p>The simulator runs once per real minute. No dashboard. No grinding loop.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num icon--teal">3</div>
-          <h3>Offline catch-up</h3>
-          <p>Reopen after a day away and the missed ticks replay so the story stays continuous.</p>
-        </div>
-      </div>
-
-      <div class="sky-strip reveal" aria-hidden="true">
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#1A1F3A,#2A2E50);"><span>pre-dawn</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#3A3960,#6B5577);"><span>dawn</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#F2D9B3,#F4B594);"><span>sunrise</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#BCDCEE,#9ECCE8);"><span>morning</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#9ECCE8,#7DCAF6);"><span>midday</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#C7CCD9,#9EA8BC);"><span>overcast</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#F2D9B3,#D4BCD9);"><span>golden hr</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#E89A78,#A66F86);"><span>sunset</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#5A4A75,#2E386B);"><span>dusk</span></div>
-        <div class="sky-swatch" style="background: linear-gradient(180deg,#1F244D,#0A0E25);"><span>deep night</span></div>
+  <!-- MARQUEE -->
+  <section class="marquee-section">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Always nearby</span><span class="m-star">✦</span>
+        <span>Never in the way</span><span class="m-star">✦</span>
+        <span>One click away</span><span class="m-star">✦</span>
+        <span>Tend daily</span><span class="m-star">✦</span>
+        <span>Bloom slowly</span><span class="m-star">✦</span>
+        <span>Always nearby</span><span class="m-star">✦</span>
+        <span>Never in the way</span><span class="m-star">✦</span>
+        <span>One click away</span><span class="m-star">✦</span>
+        <span>Tend daily</span><span class="m-star">✦</span>
+        <span>Bloom slowly</span><span class="m-star">✦</span>
       </div>
     </div>
   </section>
 
-  <!-- DESIGN SYSTEM -->
-  <section>
+  <!-- CAST -->
+  <section id="cast" class="cast">
+    <span class="deco deco--squiggle deco--tr"></span>
+    <span class="deco deco--sparkle deco--s4"></span>
+    <span class="deco deco--sparkle deco--s5"></span>
+
     <div class="container">
       <div class="section-head reveal">
-        <h2>Built on a tiny system.</h2>
-        <p>Eight colors, two typefaces, one accent per surface. That's the whole kit.</p>
+        <div class="eyebrow">✦ Pick your plant ✦</div>
+        <h2>Which one<br/>sounds like you?</h2>
       </div>
 
-      <div class="design-grid">
-        <div class="palette reveal">
-          <div class="chip"><div class="chip-swatch" style="background:#F5F4ED"></div><div class="chip-name">Fantasy</div><div class="chip-hex">#F5F4ED</div><div class="chip-use">Paper / surfaces</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#FFDA57"></div><div class="chip-name">Light Gold</div><div class="chip-hex">#FFDA57</div><div class="chip-use">Primary CTA</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#100F06"></div><div class="chip-name">Smoky Black</div><div class="chip-hex">#100F06</div><div class="chip-use">Outlines / text</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#7DCAF6"></div><div class="chip-name">Malibu</div><div class="chip-hex">#7DCAF6</div><div class="chip-use">Weather / water</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#A293FF"></div><div class="chip-name">Lavender</div><div class="chip-hex">#A293FF</div><div class="chip-use">Mood / variety</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#00917A"></div><div class="chip-name">Teal</div><div class="chip-hex">#00917A</div><div class="chip-use">Health good</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#FFBBF4"></div><div class="chip-name">Blossom Pink</div><div class="chip-hex">#FFBBF4</div><div class="chip-use">Bloom moments</div></div>
-          <div class="chip"><div class="chip-swatch" style="background:#F47575"></div><div class="chip-name">Light Coral</div><div class="chip-hex">#F47575</div><div class="chip-use">Health bad</div></div>
+      <div class="tile-row">
+
+        <div class="tile reveal">
+          <div class="tile-inner">
+            <div class="tile-face tile-front tile--gold">
+              <div class="tile-bubble">Sprout</div>
+              <img loading="lazy" decoding="async" class="tile-plant" src="assets/plants/sprout_3.png" alt="Sprout" />
+              <span class="spark spark--a"></span>
+              <span class="spark spark--b"></span>
+            </div>
+            <div class="tile-face tile-back">
+              <div class="tile-bubble">Sprout</div>
+              <div class="back-mood">Curious</div>
+              <p class="back-desc">The friendly classic. Balanced needs, easygoing temperament.</p>
+              <ul class="back-traits">
+                <li>✦ Easygoing</li>
+                <li>✦ Balanced water</li>
+                <li>✦ Always unlocked</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="type-stack">
-          <div class="type-card reveal">
-            <div class="specimen unbounded">Aa</div>
-            <div class="type-name">Unbounded</div>
-            <div class="type-role">Display — headings, pills</div>
-          </div>
-          <div class="type-card reveal">
-            <div class="specimen grotesk">Aa</div>
-            <div class="type-name">Space Grotesk</div>
-            <div class="type-role">Body — everything else</div>
+        <div class="tile reveal">
+          <div class="tile-inner">
+            <div class="tile-face tile-front tile--malibu">
+              <div class="tile-bubble">Cactus</div>
+              <img loading="lazy" decoding="async" class="tile-plant" src="assets/plants/cactus_3.png" alt="Cactus" />
+              <span class="spark spark--a"></span>
+              <span class="spark spark--b"></span>
+            </div>
+            <div class="tile-face tile-back">
+              <div class="tile-bubble">Cactus</div>
+              <div class="back-mood">Sassy</div>
+              <p class="back-desc">Tough and prickly. Hates water. Will outlive your forgetfulness.</p>
+              <ul class="back-traits">
+                <li>✦ Drought-loving</li>
+                <li>✦ Hardy</li>
+                <li>✦ Survive 7 days to unlock</li>
+              </ul>
+            </div>
           </div>
         </div>
+
+        <div class="tile reveal">
+          <div class="tile-inner">
+            <div class="tile-face tile-front tile--lavender">
+              <div class="tile-bubble">Sunflower</div>
+              <img loading="lazy" decoding="async" class="tile-plant" src="assets/plants/sunflower_3.png" alt="Sunflower" />
+              <span class="spark spark--a"></span>
+              <span class="spark spark--b"></span>
+            </div>
+            <div class="tile-face tile-back">
+              <div class="tile-bubble">Sunflower</div>
+              <div class="back-mood">Dramatic</div>
+              <p class="back-desc">Fast grower, big bloom. Loves the sun, but fragile if neglected.</p>
+              <ul class="back-traits">
+                <li>✦ Sun-hungry</li>
+                <li>✦ Fast grower</li>
+                <li>✦ Grow 1 flower to unlock</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile reveal">
+          <div class="tile-inner">
+            <div class="tile-face tile-front tile--pink">
+              <div class="tile-bubble">Bonsai</div>
+              <img loading="lazy" decoding="async" class="tile-plant" src="assets/plants/bonsai_3.png" alt="Bonsai" />
+              <span class="spark spark--a"></span>
+              <span class="spark spark--b"></span>
+            </div>
+            <div class="tile-face tile-back">
+              <div class="tile-bubble">Bonsai</div>
+              <div class="back-mood">Zen</div>
+              <p class="back-desc">Slow, ancient, near-immortal. The patient gardener's choice.</p>
+              <ul class="back-traits">
+                <li>✦ Very tough</li>
+                <li>✦ Slow growth</li>
+                <li>✦ Reach Mature 3× to unlock</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="tile reveal">
+          <div class="tile-inner">
+            <div class="tile-face tile-front tile--coral">
+              <div class="tile-bubble">Flytrap</div>
+              <img loading="lazy" decoding="async" class="tile-plant" src="assets/plants/flytrap_3.png" alt="Venus flytrap" />
+              <span class="spark spark--a"></span>
+              <span class="spark spark--b"></span>
+            </div>
+            <div class="tile-face tile-back">
+              <div class="tile-bubble">Flytrap</div>
+              <div class="back-mood">Curious</div>
+              <p class="back-desc">Carnivorous. Eats bugs for breakfast. Loves humidity.</p>
+              <ul class="back-traits">
+                <li>✦ Tropical bog</li>
+                <li>✦ Auto-eats pests</li>
+                <li>✦ Clean 30 pests to unlock</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
+
 
   <!-- INSTALL -->
   <section id="install" class="install">
-    <div class="container">
-      <h2 class="reveal">Grab the DMG.</h2>
-      <p class="lede reveal">Drag, double-click, done. Planto installs to /Applications and lives quietly in your menu bar from then on.</p>
-      <a href="#" data-cta class="pill pill--gold reveal">⬇ Download Planto.dmg</a>
+    <span class="deco deco--sparkle deco--s6"></span>
+    <span class="deco deco--sparkle deco--s7"></span>
+    <span class="deco deco--squiggle deco--bl"></span>
 
-      <ol class="install-steps reveal">
-        <li>Open <strong>Planto.dmg</strong>.</li>
-        <li>Right-click <strong>Install Planto.command</strong> → <strong>Open</strong>.</li>
-        <li>Approve the one-time Gatekeeper prompt.</li>
-        <li>It installs to <code>/Applications</code> and launches — done forever.</li>
-      </ol>
+    <img loading="lazy" decoding="async" class="install-smiley" src="assets/decor/smiley.svg" alt="" aria-hidden="true" />
 
-      <p class="install-caption">Ad-hoc signed, not notarized — that's why the helper script exists.</p>
+    <div class="container install-inner">
+      <div class="eyebrow eyebrow--dark reveal">✦ Free forever ✦</div>
+      <h2 class="reveal">Bring one home.</h2>
+      <p class="lede reveal">Free, forever. In a minute, there'll be a tiny plant living up in your menu bar — waiting to say hi.</p>
+      <a href="https://github.com/anmolbhardwaj17/planto/releases/latest/download/Planto.dmg" data-cta class="get-started get-started--gold reveal">
+        <span class="get-started__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg>
+        </span>
+        <span class="get-started__label">Download Planto.dmg</span>
+      </a>
+      <p class="install-caption reveal">Open the DMG, then right‑click <strong>Install Planto.command</strong> → <strong>Open</strong>. One‑time approval, then it lives in <code>/Applications</code> forever.</p>
     </div>
   </section>
 
@@ -248,14 +375,43 @@
 
 <footer>
   <div class="container">
-    <div class="signoff">Tend daily. Bloom slowly.</div>
-    <p class="credits">Weather by Open-Meteo · Icons via SF Symbols · Type by Unbounded &amp; Space Grotesk · Made with care for menu bars everywhere.</p>
-    <p class="copyright">© 2026 Planto.</p>
+    <div class="signoff">Tend daily.<br/>Bloom slowly.</div>
+    <p class="footer-links"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="https://github.com/anmolbhardwaj17/planto" target="_blank" rel="noopener">GitHub</a> · <a href="https://anmolbhardwaj.com" target="_blank" rel="noopener">anmolbhardwaj.com</a></p>
+    <p class="copyright">© 2026 Planto · Built by <a href="https://anmolbhardwaj.com" target="_blank" rel="noopener">Anmol Bhardwaj</a>.</p>
+  </div>
+
+  <div class="footer-plants" aria-hidden="true">
+    <img loading="lazy" decoding="async" src="assets/plants/sprout_1.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/cactus_2.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sunflower_4.png" alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/bonsai_2.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/flytrap_3.png"   alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sprout_3.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/cactus_4.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sunflower_2.png" alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/bonsai_4.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/flytrap_1.png"   alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sprout_4.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/cactus_1.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sunflower_3.png" alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/bonsai_1.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/flytrap_4.png"   alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sprout_2.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/cactus_3.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/sunflower_1.png" alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/bonsai_3.png"    alt="" />
+    <img loading="lazy" decoding="async" src="assets/plants/flytrap_2.png"   alt="" />
   </div>
 </footer>
 
-<a href="#install" class="pill pill--gold float-cta">⬇ Install Planto</a>
+<a href="#install" class="get-started get-started--gold float-cta">
+  <span class="get-started__icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg>
+  </span>
+  <span class="get-started__label">Download</span>
+</a>
 
 <script src="js/main.js"></script>
+<script src="js/gsap-anim.js" defer></script>
 </body>
 </html>
