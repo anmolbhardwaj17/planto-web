@@ -1,0 +1,56 @@
+@keyframes sway {
+  0%, 100% { transform: translateX(-50%) rotate(-1.2deg); }
+  50%      { transform: translateX(-50%) rotate(1.2deg); }
+}
+
+@keyframes drift-sun {
+  0%   { transform: translateX(0) translateY(0); }
+  50%  { transform: translateX(420%) translateY(-12px); }
+  100% { transform: translateX(840%) translateY(0); }
+}
+
+@keyframes drift-cloud-a {
+  0%   { transform: translateX(-120px); }
+  100% { transform: translateX(520px); }
+}
+@keyframes drift-cloud-b {
+  0%   { transform: translateX(520px); }
+  100% { transform: translateX(-160px); }
+}
+
+/* Cycles through 4 sky pairs from Theme.swift */
+@keyframes sky-phase {
+  0%   { background: linear-gradient(180deg, #BCDCEE 0%, #9ECCE8 100%); } /* skySoftBlue → skyMidBlue */
+  25%  { background: linear-gradient(180deg, #F2D9B3 0%, #D4BCD9 100%); } /* skyWarmTop → skyWarmBot */
+  50%  { background: linear-gradient(180deg, #2E386B 0%, #1F244D 100%); } /* skyNightTop → skyNightBot */
+  75%  { background: linear-gradient(180deg, #C7CCD9 0%, #9EA8BC 100%); } /* skyGrayTop → skyGrayBot */
+  100% { background: linear-gradient(180deg, #BCDCEE 0%, #9ECCE8 100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 2px 0 var(--smoky), 0 0 0 0 rgba(255, 218, 87, 0.6); }
+  50%      { box-shadow: 0 2px 0 var(--smoky), 0 0 28px 4px rgba(255, 218, 87, 0.55); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes bubble-in {
+  0%   { opacity: 0; transform: translateX(-50%) scale(0.85); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* Reduce motion — kill everything */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation: none !important;
+  transition: none !important;
+}

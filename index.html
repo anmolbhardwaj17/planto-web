@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planto — A pet that grows on you.</title>
+  <meta name="description" content="A menu bar plant pet for macOS. Real weather, real time, five species, one quiet companion that grows beside your day." />
+  <meta property="og:title" content="Planto — A pet that grows on you." />
+  <meta property="og:description" content="A menu bar plant pet for macOS." />
+  <meta property="og:image" content="assets/icon/planto-icon-256.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="assets/icon/favicon.png" alt="" />
+      <span>Planto</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">A pet that grows on you.</div>
+        <h1>Planto</h1>
+        <p class="lede">A tiny watercolor plant that lives in your menu bar. It tracks real weather, real time, and a quiet inner life of its own — a calm companion that asks for almost nothing and grows beside your day.</p>
+        <div class="cta-row">
+          <a href="#install" data-cta class="pill pill--dark">Install DMG</a>
+          <a href="https://github.com" target="_blank" rel="noopener" class="pill">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="scene-card reveal" aria-hidden="true">
+        <div class="sky"></div>
+        <div class="sun"></div>
+        <div class="cloud cloud--a"></div>
+        <div class="cloud cloud--b"></div>
+        <div class="weather-pill">☀︎ 21° San Francisco</div>
+        <div class="bubble">Oh, hi there!</div>
+        <div class="scene-plant">
+          <img src="assets/plants/sprout_3.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>A real living plant.</h2>
+        <p>Three rules — flat fills only, chunky shapes with breathing room, one accent per surface — applied to a creature that actually has a day.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature-card reveal">
+          <div class="feature-icon icon--teal">⏱</div>
+          <h3>Real-time simulation</h3>
+          <p>Water, light, temperature and mood update on the same minute the world does. No fast-forward, no fake numbers.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon icon--lavender">★</div>
+          <h3>Five personalities</h3>
+          <p>Each species reacts to weather, light and your attention differently. Forgiving sprout, stubborn cactus, dramatic sunflower.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon icon--coral">!</div>
+          <h3>Random events</h3>
+          <p>A leaf unfurls. A bug visits. A heatwave rolls in. Tiny moments that make checking in feel worth it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIES -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Five species to grow.</h2>
+        <p>Pick a plant that matches the kind of attention you actually have.</p>
+      </div>
+
+      <div class="species-row">
+        <div class="species-card reveal">
+          <img src="assets/plants/sprout_3.png" alt="Sprout" />
+          <h3>Sprout</h3>
+          <p class="quip">A friendly first plant.</p>
+          <div class="trait-pills">
+            <span class="trait">forgiving</span>
+            <span class="trait">balanced</span>
+            <span class="trait">friendly</span>
+          </div>
+        </div>
+        <div class="species-card reveal">
+          <img src="assets/plants/cactus_3.png" alt="Cactus" />
+          <h3>Cactus</h3>
+          <p class="quip">Tough little desert philosopher.</p>
+          <div class="trait-pills">
+            <span class="trait">desert tough</span>
+            <span class="trait">drought-loving</span>
+            <span class="trait">stubborn</span>
+          </div>
+        </div>
+        <div class="species-card reveal">
+          <img src="assets/plants/sunflower_3.png" alt="Sunflower" />
+          <h3>Sunflower</h3>
+          <p class="quip">Tall, bright, dramatic.</p>
+          <div class="trait-pills">
+            <span class="trait">fast grower</span>
+            <span class="trait">sun-hungry</span>
+            <span class="trait">fragile</span>
+          </div>
+        </div>
+        <div class="species-card reveal">
+          <img src="assets/plants/bonsai_3.png" alt="Bonsai" />
+          <h3>Bonsai</h3>
+          <p class="quip">A tiny tree with a long memory.</p>
+          <div class="trait-pills">
+            <span class="trait">slow</span>
+            <span class="trait">ancient</span>
+            <span class="trait">patient</span>
+          </div>
+        </div>
+        <div class="species-card reveal">
+          <img src="assets/plants/flytrap_3.png" alt="Venus flytrap" />
+          <h3>Venus flytrap</h3>
+          <p class="quip">Hungry. Humid. Self-sufficient.</p>
+          <div class="trait-pills">
+            <span class="trait">carnivorous</span>
+            <span class="trait">humid</span>
+            <span class="trait">self-feeding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEATHER + TIME -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Real weather, real time.</h2>
+        <p>Planto sips data quietly in the background and replays anything you missed.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num icon--gold">1</div>
+          <h3>Live weather</h3>
+          <p>Open-Meteo, no API key, no account. Your plant feels what your city feels.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num icon--malibu">2</div>
+          <h3>Minute ticks</h3>
+          <p>The simulator runs once per real minute. No dashboard. No grinding loop.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num icon--teal">3</div>
+          <h3>Offline catch-up</h3>
+          <p>Reopen after a day away and the missed ticks replay so the story stays continuous.</p>
+        </div>
+      </div>
+
+      <div class="sky-strip reveal" aria-hidden="true">
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#1A1F3A,#2A2E50);"><span>pre-dawn</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#3A3960,#6B5577);"><span>dawn</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#F2D9B3,#F4B594);"><span>sunrise</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#BCDCEE,#9ECCE8);"><span>morning</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#9ECCE8,#7DCAF6);"><span>midday</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#C7CCD9,#9EA8BC);"><span>overcast</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#F2D9B3,#D4BCD9);"><span>golden hr</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#E89A78,#A66F86);"><span>sunset</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#5A4A75,#2E386B);"><span>dusk</span></div>
+        <div class="sky-swatch" style="background: linear-gradient(180deg,#1F244D,#0A0E25);"><span>deep night</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Built on a tiny system.</h2>
+        <p>Eight colors, two typefaces, one accent per surface. That's the whole kit.</p>
+      </div>
+
+      <div class="design-grid">
+        <div class="palette reveal">
+          <div class="chip"><div class="chip-swatch" style="background:#F5F4ED"></div><div class="chip-name">Fantasy</div><div class="chip-hex">#F5F4ED</div><div class="chip-use">Paper / surfaces</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#FFDA57"></div><div class="chip-name">Light Gold</div><div class="chip-hex">#FFDA57</div><div class="chip-use">Primary CTA</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#100F06"></div><div class="chip-name">Smoky Black</div><div class="chip-hex">#100F06</div><div class="chip-use">Outlines / text</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#7DCAF6"></div><div class="chip-name">Malibu</div><div class="chip-hex">#7DCAF6</div><div class="chip-use">Weather / water</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#A293FF"></div><div class="chip-name">Lavender</div><div class="chip-hex">#A293FF</div><div class="chip-use">Mood / variety</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#00917A"></div><div class="chip-name">Teal</div><div class="chip-hex">#00917A</div><div class="chip-use">Health good</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#FFBBF4"></div><div class="chip-name">Blossom Pink</div><div class="chip-hex">#FFBBF4</div><div class="chip-use">Bloom moments</div></div>
+          <div class="chip"><div class="chip-swatch" style="background:#F47575"></div><div class="chip-name">Light Coral</div><div class="chip-hex">#F47575</div><div class="chip-use">Health bad</div></div>
+        </div>
+
+        <div class="type-stack">
+          <div class="type-card reveal">
+            <div class="specimen unbounded">Aa</div>
+            <div class="type-name">Unbounded</div>
+            <div class="type-role">Display — headings, pills</div>
+          </div>
+          <div class="type-card reveal">
+            <div class="specimen grotesk">Aa</div>
+            <div class="type-name">Space Grotesk</div>
+            <div class="type-role">Body — everything else</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section id="install" class="install">
+    <div class="container">
+      <h2 class="reveal">Grab the DMG.</h2>
+      <p class="lede reveal">Drag, double-click, done. Planto installs to /Applications and lives quietly in your menu bar from then on.</p>
+      <a href="#" data-cta class="pill pill--gold reveal">⬇ Download Planto.dmg</a>
+
+      <ol class="install-steps reveal">
+        <li>Open <strong>Planto.dmg</strong>.</li>
+        <li>Right-click <strong>Install Planto.command</strong> → <strong>Open</strong>.</li>
+        <li>Approve the one-time Gatekeeper prompt.</li>
+        <li>It installs to <code>/Applications</code> and launches — done forever.</li>
+      </ol>
+
+      <p class="install-caption">Ad-hoc signed, not notarized — that's why the helper script exists.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="signoff">Tend daily. Bloom slowly.</div>
+    <p class="credits">Weather by Open-Meteo · Icons via SF Symbols · Type by Unbounded &amp; Space Grotesk · Made with care for menu bars everywhere.</p>
+    <p class="copyright">© 2026 Planto.</p>
+  </div>
+</footer>
+
+<a href="#install" class="pill pill--gold float-cta">⬇ Install Planto</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
